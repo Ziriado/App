@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Projekt1Eget.Views.WeatherView"
+              xmlns:local="clr-namespace:Projekt1Eget"
+             x:DataType="local:Views.WeatherView"
+             Title="Weather Info Page">
+   
+
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <Grid
+            Padding="10"
+            RowDefinitions="10,300,80,100,100,100,100,100"
+            ColumnDefinitions="Auto,300,300"
+            ColumnSpacing="100">
+            <Image
+                Grid.Column="1"
+                Grid.RowSpan="2"
+                x:Name="PictureWeather"
+                Source="sol.jpg"
+                HeightRequest="200"
+                HorizontalOptions="Center"
+                ></Image>
+            <Label
+                Grid.Column="1"
+                Grid.Row="2"
+                FontSize="15"
+                x:Name="Weather"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                ></Label>
+                <Label
+                    Grid.Column="1"
+                    Grid.Row="4"
+                    FontSize="15"
+                    x:Name="InputWeatherText"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    ></Label>
+            <Entry Placeholder="Stad som du vill se temperturen i"
+                   x:Name="city"
+                   Grid.Row="5"
+                   Grid.Column="1"
+                   
+
+           ></Entry>
+            <Entry Placeholder="Land som staden ligger i"
+                   x:Name="country"
+                   Grid.Row="6"
+                   Grid.Column="1"
+                   
+
+            ></Entry>
+               
+                   
+            <Button
+                Grid.Row="3"
+                Grid.Column="1"
+                HeightRequest="20"
+                Text="Väder i din ort"
+                Clicked="GetWeatherAtYourLocation"
+                HorizontalOptions="Center"
+                ></Button>
+                <Button
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    HeightRequest="20"
+                    Text="Temp på angivna orten."
+                    
+                    Clicked="GetWeatherWithInputs"
+                    HorizontalOptions="Center"
+                    ></Button>
+            <Button
+                Grid.Row="1"
+                Grid.Column="0"
+                HeightRequest="20"
+                Clicked="GoBack"
+                Text="Return"
+                BackgroundColor="Red"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                ></Button>
+
+        </Grid>
+    </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

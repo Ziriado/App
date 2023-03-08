@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Projekt1Eget.MainPage"
+             Title="Home Page">
+               
+
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="20"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="homepage.jpg"
+                HeightRequest="300"
+                
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="En info app"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+         
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Ip"
+                
+                Clicked="GoToIp"
+                HorizontalOptions="Center" />
+            <Button
+                x:Name="GoToShootingInfo"
+                Text="Shootings"
+              
+                Clicked="GoToShooting"
+                HorizontalOptions="Center" />
+            <Button
+                x:Name="TimeInfo"
+                Text="Time"
+              
+                Clicked="GoTime"
+                HorizontalOptions="Center" />
+            <Button
+                x:Name="CurrencyButton"
+                Text="Currency"
+                Clicked="GetCurrencyPage"
+                HorizontalOptions="Center"
+                ></Button>
+            <Button
+                x:Name="WeatherButton"
+                Text="Weather"
+                Clicked="GetWeatherpage"
+                HorizontalOptions="Center"
+                ></Button>
+            <Button
+                x:Name="CovidButton"
+                Text="Covid Page"
+                Clicked="GetCovidPage"
+                HorizontalOptions="Center"
+                ></Button>
+            <Label
+                x:Name="NextCity"
+                HorizontalOptions="Center"
+                FontSize="20"
+                ></Label>
+            <Label
+                x:Name="NextCity2"
+                HorizontalOptions="Center"
+                FontSize="20"
+                ></Label>
+            <Button
+                x:Name="Singleton"
+                Text="Singleton method"
+                Clicked="CityOutput"
+                HorizontalOptions="Center"
+                ></Button>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
