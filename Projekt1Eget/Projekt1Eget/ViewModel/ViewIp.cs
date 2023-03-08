@@ -28,7 +28,7 @@ namespace Projekt1Eget.ViewModel
             }
             catch (Exception e)
             {
-                address = "null";
+                address = ViewModel.CallMethods.CatchReturn();
             }
             return address;
         }

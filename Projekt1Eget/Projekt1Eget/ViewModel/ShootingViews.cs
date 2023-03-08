@@ -32,7 +32,7 @@ namespace Projekt1Eget.ViewModel
             }
             catch (Exception e)
             {
-                result2 = "Gick ej att få fram totalt antal skjutningar kontakta admin";
+                result2 = ViewModel.CallMethods.CatchReturn();
             }
             return result2;
         }
@@ -51,7 +51,7 @@ namespace Projekt1Eget.ViewModel
             }
             catch (Exception e)
             {
-                result = "Gick inte att få fram senaste datumet kontakta admin";
+                result = ViewModel.CallMethods.CatchReturn(); ;
             }
             return result;
         }
@@ -72,7 +72,7 @@ namespace Projekt1Eget.ViewModel
             }
             catch(Exception e)
             {
-                result = "Gick inte att få fram info om senaste skjutningen kontakta admin";
+                result = ViewModel.CallMethods.CatchReturn();
             }
             return result;
         }

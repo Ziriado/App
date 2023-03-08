@@ -25,7 +25,7 @@ namespace Projekt1Eget.ViewModel
             }
             catch(Exception e) 
             {
-                finaloutput = "null";
+                finaloutput = ViewModel.CallMethods.CatchReturn();
             }
             return finaloutput;
         }
