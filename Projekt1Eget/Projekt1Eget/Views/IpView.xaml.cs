@@ -16,7 +16,8 @@ public partial class IpView : ContentPage
 	{
 		var ip=ViewModel.ViewIp.GetIPAddress();
         string ipstring = (await ip).ToString();
-		if (ipstring != "null")
+		var noReturn = ViewModel.CallMethods.CatchReturn();
+		if (ipstring != noReturn)
 		{
 			var ipForApp = ViewModel.ViewIp.GetIp("v1/iplookup?address=" + ipstring);
 
