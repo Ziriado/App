@@ -10,7 +10,8 @@ public partial class CovidInfo : ContentPage
     private void GetAmountOfTotalCovidSickness(object sender, EventArgs e)
     {
 		var output = ViewModel.CovidView.AmountOfCovidWorldWide();
-        if (output == "null")
+        var noReturn = ViewModel.CallMethods.CatchReturn();
+        if (output == noReturn)
         {
             CoronaInfo.Text = "Det gick inte att hitta någon data kontakta admin eller försök senare";
         }

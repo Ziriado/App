@@ -17,9 +17,10 @@ public partial class ShootingInfo : ContentPage
         var amount = ViewModel.ShootingViews.AmountOfShootings(htmlContent);
         var date = ViewModel.ShootingViews.DateOfLastShooting(htmlContent);
         var infoShooting = ViewModel.ShootingViews.LastShootingInfo(htmlContent);
-        
 
-        if (await amount != "null")
+        var noReturn = ViewModel.CallMethods.CatchReturn();
+
+        if (await amount != noReturn)
         {
             ShootingAmount.Text = amount.Result;
         }
@@ -29,7 +30,7 @@ public partial class ShootingInfo : ContentPage
         }
 
        
-        if (await date != "null")
+        if (await date != noReturn)
         {
 
             DateofShooting.Text = "Senaste skjutningen: " + date.Result;
@@ -40,7 +41,7 @@ public partial class ShootingInfo : ContentPage
         }
 
         
-        if (await infoShooting != "null")
+        if (await infoShooting != noReturn)
         {
             InfoLastShooting.Text = "Info: " + infoShooting.Result;
         }
@@ -48,11 +49,7 @@ public partial class ShootingInfo : ContentPage
         {
             InfoLastShooting.Text = "Gick inte att hämta någon info om senaste skjutningen";
         }
-
     }
-
- 
-
     private void GoBack(object sender, EventArgs e)
     {
         Navigation.PopAsync();
