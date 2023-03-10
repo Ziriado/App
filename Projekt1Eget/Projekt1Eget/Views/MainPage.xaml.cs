@@ -3,19 +3,13 @@ namespace Projekt1Eget;
 
 public partial class MainPage : ContentPage
 {
-
- ViewModel.ViewIp vm=new ViewModel.ViewIp();
-
     static ViewModel.MainPageOneCityFromList city1 = ViewModel.MainPageOneCityFromList.GetCity();
     static ViewModel.MainPageOneCityFromList city2 = ViewModel.MainPageOneCityFromList.GetCity();
 
     public MainPage()
     {
         InitializeComponent();
-      
     }
-
-
 
     private async void GoToIp(object sender, EventArgs e)
     {
