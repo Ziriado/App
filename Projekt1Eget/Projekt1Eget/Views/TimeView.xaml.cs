@@ -17,10 +17,10 @@ public partial class TimeView : ContentPage
         while (true)
         {
 
-            var a = ViewModel.ViewTime.GetTimeForACity(input);
-            if (await a != null)
+            var timeOneCity = ViewModel.ViewTime.GetTimeForACity(input);
+            if (await timeOneCity != null)
             {
-                var forSplit = (await a).datetime.ToString().Split('T', '.');
+                var forSplit = (await timeOneCity).datetime.ToString().Split('T', '.');
                 var outPut = forSplit[1];
                 if (city == "Stockholm")
                 {
