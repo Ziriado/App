@@ -6,12 +6,7 @@ public partial class ShootingInfo : ContentPage
 	{
 		InitializeComponent();
 	}
-    private void GetAmountofShootings(object sender, EventArgs e)
-    {
-        GetAmountofShootings1();
-    }
-
-    private async void GetAmountofShootings1()
+    private async void GetAmountofShootings(object sender, EventArgs e)
     {
         var htmlContent = await ViewModel.CallMethods.GetWebClient("https://bombings.incharts.se/sv/skjutningar/kommun/stockholm");
         var amount = ViewModel.ShootingViews.AmountOfShootings(htmlContent);
