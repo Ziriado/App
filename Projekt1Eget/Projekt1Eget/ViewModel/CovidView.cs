@@ -14,16 +14,15 @@ namespace Projekt1Eget.ViewModel
             string finaloutput;
             try
             {
-                string url = "https://www.worldometers.info/coronavirus/";
-                string htmlContent = new System.Net.WebClient().DownloadString(url);
+                string htmlContent = new System.Net.WebClient().DownloadString("https://www.worldometers.info/coronavirus/");
                 Regex startOfChains = new Regex("        <span style=\"color:#aaa\">.*        <\\/span>");
-                
+
                 MatchCollection matches = startOfChains.Matches(htmlContent);
                 Regex firstReplace = new Regex("<.*?>");
                 string removeBadOutput1 = firstReplace.Replace(matches[0].ToString(), "");
-                 finaloutput = removeBadOutput1.Trim();
+                finaloutput = removeBadOutput1.Trim();
             }
-            catch(Exception e) 
+            catch (Exception e)
             {
                 finaloutput = ViewModel.CallMethods.CatchReturn();
             }

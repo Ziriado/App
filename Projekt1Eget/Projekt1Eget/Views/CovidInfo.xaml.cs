@@ -9,15 +9,15 @@ public partial class CovidInfo : ContentPage
 
     private void GetAmountOfTotalCovidSickness(object sender, EventArgs e)
     {
-		var output = ViewModel.CovidView.AmountOfCovidWorldWide();
-        var noReturn = ViewModel.CallMethods.CatchReturn();
-        if (output == noReturn)
+        var output = ViewModel.CovidView.AmountOfCovidWorldWide();
+        var noOutput = ViewModel.CallMethods.CatchReturn();
+        if (output == noOutput)
         {
             CoronaInfo.Text = "Det gick inte att hitta någon data kontakta admin eller försök senare";
         }
         else
         {
-		CoronaInfo.Text = "Totalt antal bekräftade Covid fall sen Covid bröt ut i världen " + output;
+            CoronaInfo.Text = "Totalt antal bekräftade Covid fall sen Covid bröt ut i världen " + output;
 
         }
     }
