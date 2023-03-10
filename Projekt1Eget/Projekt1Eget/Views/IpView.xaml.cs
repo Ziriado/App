@@ -19,7 +19,7 @@ public partial class IpView : ContentPage
 		var noReturn = ViewModel.CallMethods.CatchReturn();
 		if (ipstring != noReturn)
 		{
-			var ipForApp = ViewModel.ViewIp.GetIp("v1/iplookup?address=" + ipstring);
+			var ipForApp = ViewModel.ViewIp.GetIp(ViewModel.CallMethods.GetIpString(ipstring));
 
 			if (await ipForApp != null)
 			{

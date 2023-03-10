@@ -17,19 +17,12 @@ public partial class WeatherView : ContentPage
     {
         var ip = ViewModel.ViewIp.GetIPAddress();
         string ipstring = (await ip).ToString();
-        var ipForApp = ViewModel.ViewIp.GetIp("v1/iplookup?address=" + ipstring);
-
-        await ipForApp;
-
+        var ipForApp = ViewModel.ViewIp.GetIp(ViewModel.CallMethods.GetIpString(ipstring));
         if (await ipForApp != null)
-        {
-
-
-           
+        { 
             var city = ipForApp.Result.city;
             var country = ipForApp.Result.country;
-            string weatherApi = $"v1/weather?city={city},{country}";
-
+            string weatherApi = ViewModel.CallMethods.WeatherApiString(city, country);
 
             var weatherForIp = await ViewModel.ViewWeather.GetWeatherInfoOneCity(weatherApi);
 
@@ -55,7 +48,7 @@ public partial class WeatherView : ContentPage
     {
         var city1 = city.Text;
         var country1 = country.Text;
-        var weatherApi= $"v1/weather?city={city1},{country1}";
+        var weatherApi= ViewModel.CallMethods.WeatherApiString(city1, country1);
         var weatherInputs = await ViewModel.ViewWeather.GetWeatherInfoOneCity(weatherApi);
 
         if (weatherInputs != null && country1!="null" &&  country1!="Null" && country1.Length>2)
@@ -63,18 +56,19 @@ public partial class WeatherView : ContentPage
             InputWeatherText.Text = "Det är " + weatherInputs.temp + " °C varmt i staden " + city1 +
                 " som ligger i landet " + country1;
 
-            city.Text = string.Empty;
-            country.Text = string.Empty;
-          
+            ClearText();
         }
       
-
         else
         {
             InputWeatherText.Text = "Det finns ingen data på det du har angivit";
-            city.Text = string.Empty;
-            country.Text = string.Empty;
+            ClearText();
         }
+    }
+    private void ClearText()
+    {
+        city.Text = string.Empty;
+        country.Text = string.Empty;
     }
 
     private void GoBack(object sender, EventArgs e)
