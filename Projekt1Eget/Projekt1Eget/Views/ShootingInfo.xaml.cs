@@ -6,44 +6,52 @@ public partial class ShootingInfo : ContentPage
 	{
 		InitializeComponent();
 	}
-
     private void GetAmountofShootings(object sender, EventArgs e)
     {
-        string url = "https://bombings.incharts.se/sv/skjutningar/kommun/stockholm";
-        var amount = ViewModel.ShootingViews.AmountOfShootings(url);
+        GetAmountofShootings1();
+    }
 
-        if (amount !="null")
+    private async void GetAmountofShootings1()
+    {
+        var htmlContent = await ViewModel.CallMethods.GetWebClient("https://bombings.incharts.se/sv/skjutningar/kommun/stockholm");
+        var amount = ViewModel.ShootingViews.AmountOfShootings(htmlContent);
+        var date = ViewModel.ShootingViews.DateOfLastShooting(htmlContent);
+        var infoShooting = ViewModel.ShootingViews.LastShootingInfo(htmlContent);
+        
+
+        if (await amount != "null")
         {
-            ShootingAmount.Text = amount;
+            ShootingAmount.Text = amount.Result;
         }
         else
         {
             ShootingAmount.Text = "Gick inte att hämta någon data försök igen senare eller kontakta admin";
         }
 
-        var date=ViewModel.ShootingViews.DateOfLastShooting(url);
-
-        if(date != "null")
+       
+        if (await date != "null")
         {
 
-            DateofShooting.Text = "Senaste skjutningen: " + date;
+            DateofShooting.Text = "Senaste skjutningen: " + date.Result;
         }
         else
         {
             DateofShooting.Text = "Gick inte att hitta något datum för senaste skjutningen.";
         }
 
-        var infoShooting=ViewModel.ShootingViews.LastShootingInfo(url);
-
-        if (infoShooting != "null")
+        
+        if (await infoShooting != "null")
         {
-            InfoLastShooting.Text= "Info: "+infoShooting;
+            InfoLastShooting.Text = "Info: " + infoShooting.Result;
         }
         else
         {
             InfoLastShooting.Text = "Gick inte att hämta någon info om senaste skjutningen";
         }
+
     }
+
+ 
 
     private void GoBack(object sender, EventArgs e)
     {

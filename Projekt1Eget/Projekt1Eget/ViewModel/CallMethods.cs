@@ -1,18 +1,22 @@
-﻿using System;
+﻿
+using Projekt1Eget.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Projekt1Eget.ViewModel
 {
     class CallMethods
     {
-        public static string GetWebClient(string url)
+        public static async Task <string> GetWebClient(string url)
         {
             string htmlContent = new System.Net.WebClient().DownloadString(url);
 
             return htmlContent;
+
         }
 
         public static string CatchReturn()
