@@ -9,12 +9,11 @@ namespace Projekt1Eget.ViewModel
 {
     class CovidView
     {
-        public static string AmountOfCovidWorldWide()
+        public static string AmountOfCovidWorldWide(string htmlContent)
         {
             string finaloutput;
             try
             {
-                string htmlContent = new System.Net.WebClient().DownloadString("https://www.worldometers.info/coronavirus/");
                 Regex startOfChains = new Regex("        <span style=\"color:#aaa\">.*        <\\/span>");
 
                 MatchCollection matches = startOfChains.Matches(htmlContent);

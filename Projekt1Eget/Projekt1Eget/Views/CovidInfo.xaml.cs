@@ -7,9 +7,10 @@ public partial class CovidInfo : ContentPage
 		InitializeComponent();
 	}
 
-    private void GetAmountOfTotalCovidSickness(object sender, EventArgs e)
+    private async void GetAmountOfTotalCovidSickness(object sender, EventArgs e)
     {
-        var output = ViewModel.CovidView.AmountOfCovidWorldWide();
+        var htmlContent = await ViewModel.CallMethods.GetWebClient("https://www.worldometers.info/coronavirus/");
+        var output = ViewModel.CovidView.AmountOfCovidWorldWide(htmlContent);
         var noOutput = ViewModel.CallMethods.CatchReturn();
         if (output == noOutput)
         {

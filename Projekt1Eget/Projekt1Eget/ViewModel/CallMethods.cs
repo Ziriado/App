@@ -12,11 +12,25 @@ namespace Projekt1Eget.ViewModel
 {
     class CallMethods
     {
-        public static async Task <string> GetWebClient(string url)
+        public static async Task<string> GetWebClient(string url)
         {
-            string htmlContent = new System.Net.WebClient().DownloadString(url);
+            string responseBody = "";
+            try 
+            { 
+            var client = new HttpClient();
+            using HttpResponseMessage response = await client.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+             responseBody = await response.Content.ReadAsStringAsync();
 
-            return htmlContent;
+            }
+
+            catch (Exception e) 
+                {
+                responseBody = CatchReturn();
+                } 
+
+            return responseBody;
+
         }
 
         public static string CatchReturn()
@@ -33,7 +47,7 @@ namespace Projekt1Eget.ViewModel
 
             return client;
         }
-        public static string WeatherApiString(string city,string country)
+        public static string WeatherApiString(string city, string country)
         {
             string weatherApi = $"v1/weather?city={city},{country}";
 
