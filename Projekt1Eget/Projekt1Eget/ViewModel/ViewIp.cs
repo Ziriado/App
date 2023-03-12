@@ -12,15 +12,10 @@ namespace Projekt1Eget.ViewModel
     {
         public static async Task<string> GetIPAddress()
         {
-                String address = "";
+            string address = "";
             try
             {
-                WebRequest request = WebRequest.Create("http://checkip.dyndns.org/");
-                using (WebResponse response = request.GetResponse())
-                using (StreamReader stream = new StreamReader(response.GetResponseStream()))
-                {
-                    address = stream.ReadToEnd();
-                }
+                address = await CallMethods.GetWebClient("http://checkip.dyndns.org/");
 
                 int first = address.IndexOf("Address: ") + 9;
                 int last = address.LastIndexOf("</body>");
@@ -28,7 +23,7 @@ namespace Projekt1Eget.ViewModel
             }
             catch (Exception e)
             {
-                address = ViewModel.CallMethods.CatchReturn();
+                address = CallMethods.CatchReturn();
             }
             return address;
         }
