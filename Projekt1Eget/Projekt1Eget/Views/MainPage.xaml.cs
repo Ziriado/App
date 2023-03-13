@@ -38,6 +38,9 @@ public partial class MainPage : ContentPage
     }
     public async void CityOutput(object sender, EventArgs e)
     {
+        //Selected singleton pattern to show that it is possible to use a list that containts several diffrent elements
+        //but it will always take the next index in the list if you call for it several times. It would be very useful
+        //when working with a queue system. 
         NextCity.Text = "Nästa element i listan: "+city1.GetNextCity();
         NextCity2.Text = "Elementet är nästa element i samma lista med en annan metod: "+city2.GetNextCity();
     }
